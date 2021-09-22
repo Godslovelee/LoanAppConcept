@@ -5,6 +5,8 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String email;
+    String password;
     return Scaffold(
       appBar: AppBar(
         title: Text("Login Basic"),
