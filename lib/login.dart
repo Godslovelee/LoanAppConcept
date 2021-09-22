@@ -12,6 +12,7 @@ class LoginPage extends StatelessWidget {
         title: Text("Login Basic"),
       ),
         body: Container(
+          padding: EdgeInsets.all(16.0),
           child: Form(
             child: Column(
               children: [
@@ -19,8 +20,13 @@ class LoginPage extends StatelessWidget {
                   decoration: InputDecoration(labelText: "email"),
                 ),
                 TextFormField(
-                  decoration: InputDecoration(labelText: "email"),
+                  decoration: InputDecoration(labelText: "password"),
+                  obscureText: true,
                 ),
+                FloatingActionButton(
+                    child: Text("Login", style: TextStyle(fontSize: 20.0),)
+                    ,
+                    onPressed: )
 
               ],
             ),
