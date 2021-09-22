@@ -10,11 +10,19 @@ class LoginPage extends StatelessWidget {
         title: Text("Login Basic"),
       ),
         body: Container(
-          child: Center(
-            child: Text(
-              "Hello Son"
+          child: Form(
+            child: Column(
+              children: [
+                TextFormField(
+                  decoration: InputDecoration(labelText: "email"),
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: "email"),
+                ),
+
+              ],
             ),
-          ),
+          )
         ));
   }
 }
