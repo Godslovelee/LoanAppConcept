@@ -18,6 +18,7 @@ class LoginPage extends StatelessWidget {
               children: [
                 TextFormField(
                   decoration: InputDecoration(labelText: "email"),
+                  validator: (value) => value.isEmpty ? "Email Field is empty" : null,
                 ),
                 TextFormField(
                   decoration: InputDecoration(labelText: "password"),
