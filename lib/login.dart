@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key key}) : super(key: key);
+  //const LoginPage({Key key}) : super(key: key);
+
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    String email;
+    String _email;
     String password;
     return Scaffold(
       appBar: AppBar(
@@ -14,11 +16,16 @@ class LoginPage extends StatelessWidget {
         body: Container(
           padding: EdgeInsets.all(16.0),
           child: Form(
+
+            key: formKey,
             child: Column(
               children: [
                 TextFormField(
                   decoration: InputDecoration(labelText: "email"),
+                  //saving email and password state
+                  onSaved: (data) => _email = data,
                   validator: (value) => value.isEmpty ? "Email Field is empty" : null,
+
                 ),
                 TextFormField(
                   decoration: InputDecoration(labelText: "password"),
@@ -38,6 +45,13 @@ class LoginPage extends StatelessWidget {
   }
 
   validate() {
+    final form = formKey.currentState;
+    if(form.validate()){
+      print("Input is vaild");
+    }
+    else{
+      print("Input invalid");
+    }
 
   }
 }
