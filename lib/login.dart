@@ -26,11 +26,17 @@ class LoginPage extends StatelessWidget {
                 FloatingActionButton(
                     child: Text("Login", style: TextStyle(fontSize: 20.0),)
                     ,
-                    onPressed: )
+                    onPressed: validate()
+
+                )
 
               ],
             ),
           )
         ));
+  }
+
+  validate() {
+
   }
 }
