@@ -7,12 +7,21 @@ enum FormInput{
   register
 }
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   //const LoginPage({Key key}) : super(key: key);
-  String _email;
-  String _password;
-  final formKey = GlobalKey<FormState>();
 
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  FormInput _formInput = FormInput.login;
+
+  String _email;
+
+  String _password;
+
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +58,9 @@ class LoginPage extends StatelessWidget {
                   FloatingActionButton(
                       child: Text(
                         "Login", style: TextStyle(fontSize: 20.0),
-                     
+
                       ),
-                      onPressed: () => void NavigateToRegister())
+                      onPressed: () =>  NavigateToRegister())
                 ],
               ),
             )));
@@ -87,6 +96,12 @@ class LoginPage extends StatelessWidget {
   }
 
   void NavigateToRegister() {
+
+    _formInput = FormInput.register;
+
+    setState(() {
+
+    });
 
 
   }
