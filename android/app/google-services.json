@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "669527378587",
+    "project_id": "flutter-auth-testing",
+    "storage_bucket": "flutter-auth-testing.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669527378587:android:4f4c363b4c5eefeb2e943e",
+        "android_client_info": {
+          "package_name": "com.example.login_basic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "669527378587-3hgoa44spctq4v2qivdvn5klu5b49kh0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.login_basic",
+            "certificate_hash": "76c05996dd45db5d271f1a2de13b75890282c918"
+          }
+        },
+        {
+          "client_id": "669527378587-n59lhimireg7cn6v0hvfeeec6148s75q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTXS-mXjWKwvgyKcXMEosA-s7jNkt5njk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "669527378587-n59lhimireg7cn6v0hvfeeec6148s75q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669527378587:android:75a895901435a4012e943e",
+        "android_client_info": {
+          "package_name": "com.example.testing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "669527378587-n59lhimireg7cn6v0hvfeeec6148s75q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTXS-mXjWKwvgyKcXMEosA-s7jNkt5njk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "669527378587-n59lhimireg7cn6v0hvfeeec6148s75q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

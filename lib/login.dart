@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 class LoginPage extends StatelessWidget {
   //const LoginPage({Key key}) : super(key: key);
   String _email;
@@ -36,7 +36,7 @@ class LoginPage extends StatelessWidget {
                 FloatingActionButton(
                     child: Text("Login", style: TextStyle(fontSize: 20.0),)
                     ,
-                    onPressed: () => validate()
+                    onPressed: () => validateAndSubmit()
 
                 )
 
@@ -47,17 +47,26 @@ class LoginPage extends StatelessWidget {
 
 
   }
-  validate() {
+  bool validateAndSave() {
 
     final form = formKey.currentState;
     if(form.validate()){
       form.save();
-      print("Input is vaild, Email: $_email, $_password");
+      return true;
+      //print("Input is vaild, Email: $_email, $_password");
     }
     else{
-      print("Input invalid, Email: $_email, $_password");
+      return false;
+      //print("Input invalid, Email: $_email, $_password");
     }
 
+  }
+
+  validateAndSubmit(){
+    if(validateAndSave()){
+
+
+    }
   }
 
 }
