@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+
+enum FormInput{
+  login,
+  register
+}
+
 class LoginPage extends StatelessWidget {
   //const LoginPage({Key key}) : super(key: key);
   String _email;
   String _password;
   final formKey = GlobalKey<FormState>();
+
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +45,13 @@ class LoginPage extends StatelessWidget {
                         "Login",
                         style: TextStyle(fontSize: 20.0),
                       ),
-                      onPressed: () => validateAndSubmit())
+                      onPressed: () => validateAndSubmit()),
+                  FloatingActionButton(
+                      child: Text(
+                        "Login", style: TextStyle(fontSize: 20.0),
+                     
+                      ),
+                      onPressed: () => void NavigateToRegister())
                 ],
               ),
             )));
@@ -59,8 +72,8 @@ class LoginPage extends StatelessWidget {
   validateAndSubmit() async {
     if (validateAndSave()) {
       try{
-        FirebaseUser user = await FirebaseAuth.instance
-            .signInWithEmailAndPassword(email: _email, password: _password);
+        FirebaseUser user = (await FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: _email, password: _password)) as FirebaseUser;
         print("Login with password with  + ${user.uid}");
 
       }
@@ -71,5 +84,10 @@ class LoginPage extends StatelessWidget {
 
 
     }
+  }
+
+  void NavigateToRegister() {
+
+
   }
 }
