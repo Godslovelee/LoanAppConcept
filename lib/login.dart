@@ -62,8 +62,10 @@ class LoginPage extends StatelessWidget {
 
   }
 
-  validateAndSubmit(){
+  validateAndSubmit()async{
     if(validateAndSave()){
+
+      FirebaseUser user = await
         FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
 
 
