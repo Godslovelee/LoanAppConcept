@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
   //const LoginPage({Key key}) : super(key: key);
-
+  String _email;
+  String _password;
   final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    String _email;
-    String password;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Login Basic"),
@@ -23,18 +23,20 @@ class LoginPage extends StatelessWidget {
                 TextFormField(
                   decoration: InputDecoration(labelText: "email"),
                   //saving email and password state
-                  onSaved: (data) => _email = data,
+                  onSaved: (value) => _email = value,
                   validator: (value) => value.isEmpty ? "Email Field is empty" : null,
 
                 ),
                 TextFormField(
+                  onSaved: (data) => _password= data,
+                  validator: (data) => data.isEmpty ? "Password cant be empty" : null,
                   decoration: InputDecoration(labelText: "password"),
                   obscureText: true,
                 ),
                 FloatingActionButton(
                     child: Text("Login", style: TextStyle(fontSize: 20.0),)
                     ,
-                    onPressed: validate()
+                    onPressed: () => validate()
 
                 )
 
@@ -42,16 +44,21 @@ class LoginPage extends StatelessWidget {
             ),
           )
         ));
-  }
 
+
+  }
   validate() {
+
     final form = formKey.currentState;
     if(form.validate()){
-      print("Input is vaild");
+      form.save();
+      print("Input is vaild, Email: $_email, $_password");
     }
     else{
-      print("Input invalid");
+      print("Input invalid, Email: $_email, $_password");
     }
 
   }
+
 }
+
