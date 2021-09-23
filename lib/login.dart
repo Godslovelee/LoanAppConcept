@@ -64,6 +64,7 @@ class LoginPage extends StatelessWidget {
 
   validateAndSubmit(){
     if(validateAndSave()){
+        FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
 
 
     }
