@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'auth.dart';
+
 enum FormInput { login, register }
 
 class LoginPage extends StatefulWidget {
@@ -36,34 +37,30 @@ class _LoginPageState extends State<LoginPage> {
     if (validateAndSave()) {
       try {
         if (_formInput == FormInput.login) {
+          String userID = await widget.authFireBase.signInWithEmailAndPassword(_email, _password);
+
+          /*
           FirebaseUser user = (await FirebaseAuth.instance
               .signInWithEmailAndPassword(
-              email: _email, password: _password)) as FirebaseUser;
-          print("Login with password with  + ${user.uid}");
+                  email: _email, password: _password)) as FirebaseUser;
+
+
+           */
+
+          print("sign-in + $userID");
+        } else {
+         String userID = await widget.authFireBase.createUserWithEmailAndPassword(_email, _password);
+         print("create-new-user + $userID");
         }
-
-
-
-      else {
-        FirebaseUser user = (await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(
-                email: _email, password: _password)) as FirebaseUser;
-        print("object + ${user.uid}");
-      }
-
-
-    }
-    catch(e){
+      } catch (e) {
         print("Error + $e");
-    }
       }
     }
-
+  }
 
   void NavigateToRegister() {
     formKey.currentState.reset();
     setState(() {
-
       _formInput = FormInput.register;
     });
   }
@@ -86,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
             padding: EdgeInsets.all(16.0),
             child: Form(
               key: formKey,
-              child: Column(children: buildInputs()  + buildSubmitButtons()),
+              child: Column(children: buildInputs() + buildSubmitButtons()),
             )));
   }
 
