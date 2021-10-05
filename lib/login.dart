@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'auth.dart';
 enum FormInput { login, register }
 
 class LoginPage extends StatefulWidget {
   //const LoginPage({Key key}) : super(key: key);
+
+  LoginPage({this.authFireBase});
+  final BaseAuthFireBase authFireBase;
 
   @override
   _LoginPageState createState() => new _LoginPageState();
@@ -45,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
         FirebaseUser user = (await FirebaseAuth.instance
             .createUserWithEmailAndPassword(
                 email: _email, password: _password)) as FirebaseUser;
-        print("object");
+        print("object + ${user.uid}");
       }
 
 
