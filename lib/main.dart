@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_basic/login.dart';
+import 'auth.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.lightBlue
       ),
       title: "Login Demo",
-      home: LoginPage(
+      home: LoginPage(authFireBase: Auth() ,
 
       ),
     );
