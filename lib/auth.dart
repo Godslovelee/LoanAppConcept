@@ -22,5 +22,10 @@ Future<String>createUserWithEmailAndPassword(email, password)async{
   return user.uid;
 }
 
+Future<String>currentUser()async{
+  FirebaseUser user = await FirebaseAuth.instance.currentUser();
+  return user.uid;
+}
+
 
 }
