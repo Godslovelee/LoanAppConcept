@@ -24,6 +24,18 @@ class _RootPageState  extends State<RootPage> {
   Auth_Status _auth_status = Auth_Status.notSignIn;
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    widget.authFireBase.currentUser().then((value)  {
+      setState(() {
+        _auth_status = value == null ? Auth_Status.notSignIn : Auth_Status.SignedIn;
+      });
+
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     switch (_auth_status) {
       case Auth_Status.notSignIn:
