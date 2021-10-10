@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'auth.dart';
+import '../service/auth.dart';
+import '../service/root.dart';
 
 enum FormInput { login, register }
 
 class LoginPage extends StatefulWidget {
-  //const LoginPage({Key key}) : super(key: key);
 
-  LoginPage({this.authFireBase});
+
+  LoginPage({this.authFireBase, this.onSignedIn});
   final BaseAuthFireBase authFireBase;
+  final VoidCallback onSignedIn;
 
   @override
   _LoginPageState createState() => new _LoginPageState();
@@ -27,45 +29,38 @@ class _LoginPageState extends State<LoginPage> {
     if (form.validate()) {
       form.save();
       return true;
-      //print("Input is vaild, Email: $_email, $_password");
     }
     return false;
-    //print("Input invalid, Email: $_email, $_password");
   }
 
-  validateAndSubmit() async {
+  void validateAndSubmit() async {
     if (validateAndSave()) {
       try {
         if (_formInput == FormInput.login) {
-          String userID = await widget.authFireBase.signInWithEmailAndPassword(_email, _password);
-
-          /*
-          FirebaseUser user = (await FirebaseAuth.instance
-              .signInWithEmailAndPassword(
-                  email: _email, password: _password)) as FirebaseUser;
-
-
-           */
+          String userID = await widget.authFireBase
+              .signInWithEmailAndPassword(_email, _password);
 
           print("sign-in + $userID");
         } else {
-         String userID = await widget.authFireBase.createUserWithEmailAndPassword(_email, _password);
-         print("create-new-user + $userID");
+          String userID = await widget.authFireBase
+              .createUserWithEmailAndPassword(_email, _password);
+          print("create-new-user + $userID");
         }
+        widget.onSignedIn();
       } catch (e) {
         print("Error + $e");
       }
     }
   }
 
-  void NavigateToRegister() {
+  void navigateToRegister() {
     formKey.currentState.reset();
     setState(() {
       _formInput = FormInput.register;
     });
   }
 
-  NavigateToLogin() {
+  navigateToLogin() {
     formKey.currentState.reset();
     setState(() {
       _formInput = FormInput.login;
@@ -103,39 +98,46 @@ class _LoginPageState extends State<LoginPage> {
         decoration: InputDecoration(labelText: "password"),
         obscureText: true,
       ),
+      Padding(
+        padding: EdgeInsets.all(15),
+      )
     ];
   }
 
   List<Widget> buildSubmitButtons() {
     if (_formInput == FormInput.login) {
       return [
-        FloatingActionButton(
+        FlatButton(
+          color: Colors.blueAccent,
             child: Text(
               "Login",
               style: TextStyle(fontSize: 20.0),
             ),
             onPressed: () => validateAndSubmit()),
-        FloatingActionButton(
+        FlatButton(
+          color: Colors.blueAccent,
             child: Text(
               "Create an Account",
               style: TextStyle(fontSize: 20.0),
             ),
-            onPressed: () => NavigateToRegister())
+            onPressed: () => navigateToRegister())
       ];
     } else {
       return [
-        FloatingActionButton(
+        FlatButton(
+          color: Colors.blueAccent,
             child: Text(
               "Create an Account",
               style: TextStyle(fontSize: 20.0),
             ),
             onPressed: () => validateAndSubmit()),
-        FloatingActionButton(
+        FlatButton(
+          color: Colors.blueAccent,
             child: Text(
               "Already have an Account? Login",
               style: TextStyle(fontSize: 20.0),
             ),
-            onPressed: () => NavigateToLogin())
+            onPressed: () => navigateToLogin())
       ];
     }
   }
