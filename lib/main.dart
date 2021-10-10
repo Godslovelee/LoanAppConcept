@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:login_basic/login.dart';
-import 'auth.dart';
+import 'package:login_basic/screens/login_screen.dart';
+import 'service/auth.dart';
+import 'service/root.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,11 +13,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.lightBlue
-      ),
+
+      theme: ThemeData.dark(),
       title: "Login Demo",
-      home: LoginPage(authFireBase: Auth() ,
+      home: RootPage(auth: Auth() ,
 
       ),
     );
