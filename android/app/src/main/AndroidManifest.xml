@@ -2,7 +2,8 @@
     package="com.example.login_basic">
    <application
         android:label="login_basic"
-        android:icon="@mipmap/ic_launcher">
+       android:usesCleartextTraffic="true"
+       android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
