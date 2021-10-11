@@ -50,7 +50,7 @@ contentBox(context){
           children: <Widget>[
             Text("Welcome",style: TextStyle(fontSize: 22,fontWeight: FontWeight.w600),),
             SizedBox(height: 15,),
-            Text("You just made a transfer of 100# ",style: TextStyle(fontSize: 17),textAlign: TextAlign.center,),
+            Text('Congrats!! you are eligible for 1000# Advance',style: TextStyle(fontSize: 17),textAlign: TextAlign.center,),
             SizedBox(height: 22,),
             Align(
               alignment: Alignment.bottomRight,
