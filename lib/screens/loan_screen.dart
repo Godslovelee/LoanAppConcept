@@ -71,9 +71,10 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
+                //using the _menuItem created function
                 _menuItem('Online Cash\nadvance', FontAwesomeIcons.dollarSign,
                     blueGradient),
-                _menuItem('Shopping\ncredit', FontAwesomeIcons.cashRegister,
+                _menuItem('Loan\nrecord', FontAwesomeIcons.cashRegister,
                     darkRedGradient),
                 _menuItem('Invite new\nborrower', FontAwesomeIcons.envelopeOpen,
                     tealGradient),
@@ -144,6 +145,8 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+
+  //initialing arguments for menuItems to be used across the widget tree
   _menuItem(String title, IconData iconData, LinearGradient gradient) {
     return Container(
       height: MediaQuery.of(context).size.width * 0.35,
@@ -177,6 +180,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           SizedBox(height: 8),
           Text(
+
             title,
             style: TextStyle(
               fontSize: 14,
