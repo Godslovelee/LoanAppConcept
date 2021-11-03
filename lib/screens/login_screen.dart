@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Login Basic"),
+          title: Text("Loan Concept"),
         ),
         body: Container(
             padding: EdgeInsets.all(16.0),
